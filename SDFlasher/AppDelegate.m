@@ -45,11 +45,9 @@
         
         // Loop through the files and process them.
         for( i = 0; i < [files count]; i++ ) {
-            
             // get mount point from path
             // adapted from http://stackoverflow.com/questions/2167558/give-the-mount-point-of-a-path
             // df "/Volumes/NO NAME" | tail -1 | awk '{ print $1 }'
-            
             NSTask *task = [[NSTask alloc] init];
             [task setLaunchPath:@"/bin/bash"];
             
@@ -129,14 +127,31 @@
     NSString *str = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
     
     // strip any newline characters
-    self.mountPoint = [str stringByTrimmingCharactersInSet:[NSCharacterSet newlineCharacterSet]];
+    str = [str stringByTrimmingCharactersInSet:[NSCharacterSet newlineCharacterSet]];
+    
     // perform a regex on the returned mountPoint,
     // e.g. to turn /dev/disk1s2 into /dev/rdisk1
-    // using sed/bash, the command would be:
+    // using sed, the command would be:
     // sed 's/s[0-9]//g' | sed 's/\/disk/\/rdisk/g'
     NSError *error = nil;
     NSRegularExpression *removeSectorRegex = [NSRegularExpression regularExpressionWithPattern:@"s\\d+" options:NSRegularExpressionCaseInsensitive error:&error];
     NSString *stringNoSector = [removeSectorRegex stringByReplacingMatchesInString:self.mountPoint options:0 range:NSMakeRange(0, [self.mountPoint length]) withTemplate:@""];
+    
+    // SAFETY CHECK — never allow user to set mount point to /dev/disk0 (that would suck balls)
+    NSRegularExpression *diskZeroRegex = [NSRegularExpression regularExpressionWithPattern:@"disk0" options:NSRegularExpressionCaseInsensitive error:&error];
+    NSRange textRange = NSMakeRange(0, str.length);
+    NSRange matchRange = [diskZeroRegex rangeOfFirstMatchInString:str options:NSMatchingReportProgress range:textRange];
+    
+    if(matchRange.location != NSNotFound) {
+        // shit, we found a match. Abort! Abort! Do not press the red button!
+        [self.uploadBtn setEnabled:NO];
+        [self.SDBrowseBox setStringValue:@"WRONG DISK SELECTED"];
+        return;
+    }
+    
+    // we're safe, move on
+    self.mountPoint = stringNoSector;
+    
     NSRegularExpression *addPrefixRegex = [NSRegularExpression regularExpressionWithPattern:@"/disk" options:NSRegularExpressionCaseInsensitive error:&error];
     NSString *stringWithPrefix = [addPrefixRegex stringByReplacingMatchesInString:stringNoSector options:0 range:NSMakeRange(0, [stringNoSector length]) withTemplate:@"/rdisk"];
     self.mountPointRaw = stringWithPrefix;
@@ -198,7 +213,7 @@
     NSString *imagePathQuoted = [NSString stringWithFormat:@"'%@'", self.imagePath];
     NSString *ddCommand = [NSString stringWithFormat:@"sudo dd of=%@ bs=1m", self.mountPointRaw];
     
-    BOOL success = [self runProcessAsAdministrator:@"/bin/bash" withArguments:[NSArray arrayWithObjects:@"-c", @"gzip", @"-dc", imagePathQuoted, @"|", ddCommand, nil] output:&output errorDescription:&processErrorDescription];
+    BOOL success = [self runProcessAsAdministrator:@"gzip" withArguments:[NSArray arrayWithObjects:@"-dc", imagePathQuoted, @"|", ddCommand, nil] output:&output errorDescription:&processErrorDescription];
     
     if(!success) NSLog(@"Failed with exit code %@", processErrorDescription);
     else {
