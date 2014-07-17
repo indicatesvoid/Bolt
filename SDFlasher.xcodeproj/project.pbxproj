@@ -18,6 +18,8 @@
 		4B67EC8319784A1D00C1C935 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B67EC6219784A1D00C1C935 /* Cocoa.framework */; };
 		4B67EC8B19784A1D00C1C935 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4B67EC8919784A1D00C1C935 /* InfoPlist.strings */; };
 		4B67EC8D19784A1D00C1C935 /* SDFlasherTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B67EC8C19784A1D00C1C935 /* SDFlasherTests.m */; };
+		4B67EC9919784E0600C1C935 /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B67EC9719784E0600C1C935 /* bg.png */; };
+		4B67EC9A19784E0600C1C935 /* FP_Logo_Bk.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B67EC9819784E0600C1C935 /* FP_Logo_Bk.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +52,8 @@
 		4B67EC8819784A1D00C1C935 /* SDFlasherTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SDFlasherTests-Info.plist"; sourceTree = "<group>"; };
 		4B67EC8A19784A1D00C1C935 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		4B67EC8C19784A1D00C1C935 /* SDFlasherTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SDFlasherTests.m; sourceTree = "<group>"; };
+		4B67EC9719784E0600C1C935 /* bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg.png; sourceTree = "<group>"; };
+		4B67EC9819784E0600C1C935 /* FP_Logo_Bk.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FP_Logo_Bk.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +119,7 @@
 		4B67EC6819784A1D00C1C935 /* SDFlasher */ = {
 			isa = PBXGroup;
 			children = (
+				4B67EC9619784D0D00C1C935 /* Images */,
 				4B67EC7419784A1D00C1C935 /* AppDelegate.h */,
 				4B67EC7519784A1D00C1C935 /* AppDelegate.m */,
 				4B67EC7719784A1D00C1C935 /* MainMenu.xib */,
@@ -152,6 +157,15 @@
 				4B67EC8919784A1D00C1C935 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4B67EC9619784D0D00C1C935 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				4B67EC9719784E0600C1C935 /* bg.png */,
+				4B67EC9819784E0600C1C935 /* FP_Logo_Bk.png */,
+			);
+			name = Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -230,8 +244,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4B67EC9919784E0600C1C935 /* bg.png in Resources */,
 				4B67EC6D19784A1D00C1C935 /* InfoPlist.strings in Resources */,
 				4B67EC7B19784A1D00C1C935 /* Images.xcassets in Resources */,
+				4B67EC9A19784E0600C1C935 /* FP_Logo_Bk.png in Resources */,
 				4B67EC7319784A1D00C1C935 /* Credits.rtf in Resources */,
 				4B67EC7919784A1D00C1C935 /* MainMenu.xib in Resources */,
 			);
