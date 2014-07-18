@@ -12,6 +12,9 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
+
+    [self.SDBrowseBox setStringValue:@"hello"];
+
     [self.uploadBtn setEnabled:NO];
     [self.spinner setDisplayedWhenStopped:NO];
     

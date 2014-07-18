@@ -35,23 +35,23 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		4B67EC5F19784A1D00C1C935 /* SDFlasher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SDFlasher.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4B67EC5F19784A1D00C1C935 /* SDCardWriter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SDCardWriter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B67EC6219784A1D00C1C935 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		4B67EC6519784A1D00C1C935 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		4B67EC6619784A1D00C1C935 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		4B67EC6719784A1D00C1C935 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		4B67EC6A19784A1D00C1C935 /* SDFlasher-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SDFlasher-Info.plist"; sourceTree = "<group>"; };
+		4B67EC6A19784A1D00C1C935 /* SDCardWriter-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SDCardWriter-Info.plist"; sourceTree = "<group>"; };
 		4B67EC6C19784A1D00C1C935 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		4B67EC6E19784A1D00C1C935 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		4B67EC7019784A1D00C1C935 /* SDFlasher-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SDFlasher-Prefix.pch"; sourceTree = "<group>"; };
+		4B67EC7019784A1D00C1C935 /* SDCardWriter-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SDCardWriter-Prefix.pch"; sourceTree = "<group>"; };
 		4B67EC7219784A1D00C1C935 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
 		4B67EC7419784A1D00C1C935 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		4B67EC7519784A1D00C1C935 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		4B67EC7819784A1D00C1C935 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		4B67EC7A19784A1D00C1C935 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		4B67EC8019784A1D00C1C935 /* SDFlasherTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SDFlasherTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4B67EC8019784A1D00C1C935 /* SDCardWriterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SDCardWriterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B67EC8119784A1D00C1C935 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		4B67EC8819784A1D00C1C935 /* SDFlasherTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SDFlasherTests-Info.plist"; sourceTree = "<group>"; };
+		4B67EC8819784A1D00C1C935 /* SDCardWriterTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SDCardWriterTests-Info.plist"; sourceTree = "<group>"; };
 		4B67EC8A19784A1D00C1C935 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		4B67EC8C19784A1D00C1C935 /* SDFlasherTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SDFlasherTests.m; sourceTree = "<group>"; };
 		4B67EC9719784E0600C1C935 /* bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg.png; sourceTree = "<group>"; };
@@ -85,8 +85,7 @@
 		4B67EC5619784A1D00C1C935 = {
 			isa = PBXGroup;
 			children = (
-				4B67EC9B19788CB700C1C935 /* SDFlasherHelper */,
-				4B67EC6819784A1D00C1C935 /* SDFlasher */,
+				4B67EC6819784A1D00C1C935 /* SDCardWriter */,
 				4B67EC8619784A1D00C1C935 /* SDFlasherTests */,
 				4B67EC6119784A1D00C1C935 /* Frameworks */,
 				4B67EC6019784A1D00C1C935 /* Products */,
@@ -96,8 +95,8 @@
 		4B67EC6019784A1D00C1C935 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4B67EC5F19784A1D00C1C935 /* SDFlasher.app */,
-				4B67EC8019784A1D00C1C935 /* SDFlasherTests.xctest */,
+				4B67EC5F19784A1D00C1C935 /* SDCardWriter.app */,
+				4B67EC8019784A1D00C1C935 /* SDCardWriterTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -122,7 +121,7 @@
 			name = "Other Frameworks";
 			sourceTree = "<group>";
 		};
-		4B67EC6819784A1D00C1C935 /* SDFlasher */ = {
+		4B67EC6819784A1D00C1C935 /* SDCardWriter */ = {
 			isa = PBXGroup;
 			children = (
 				4B67EC9E1978937800C1C935 /* DragDropView */,
@@ -133,16 +132,17 @@
 				4B67EC7A19784A1D00C1C935 /* Images.xcassets */,
 				4B67EC6919784A1D00C1C935 /* Supporting Files */,
 			);
+			name = SDCardWriter;
 			path = SDFlasher;
 			sourceTree = "<group>";
 		};
 		4B67EC6919784A1D00C1C935 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				4B67EC6A19784A1D00C1C935 /* SDFlasher-Info.plist */,
+				4B67EC6A19784A1D00C1C935 /* SDCardWriter-Info.plist */,
 				4B67EC6B19784A1D00C1C935 /* InfoPlist.strings */,
 				4B67EC6E19784A1D00C1C935 /* main.m */,
-				4B67EC7019784A1D00C1C935 /* SDFlasher-Prefix.pch */,
+				4B67EC7019784A1D00C1C935 /* SDCardWriter-Prefix.pch */,
 				4B67EC7119784A1D00C1C935 /* Credits.rtf */,
 			);
 			name = "Supporting Files";
@@ -160,7 +160,7 @@
 		4B67EC8719784A1D00C1C935 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				4B67EC8819784A1D00C1C935 /* SDFlasherTests-Info.plist */,
+				4B67EC8819784A1D00C1C935 /* SDCardWriterTests-Info.plist */,
 				4B67EC8919784A1D00C1C935 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
@@ -173,13 +173,6 @@
 				4B67EC9819784E0600C1C935 /* FP_Logo_Bk.png */,
 			);
 			name = Images;
-			sourceTree = "<group>";
-		};
-		4B67EC9B19788CB700C1C935 /* SDFlasherHelper */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = SDFlasherHelper;
 			sourceTree = "<group>";
 		};
 		4B67EC9E1978937800C1C935 /* DragDropView */ = {
@@ -195,9 +188,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		4B67EC5E19784A1D00C1C935 /* SDFlasher */ = {
+		4B67EC5E19784A1D00C1C935 /* SDCardWriter */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4B67EC9019784A1D00C1C935 /* Build configuration list for PBXNativeTarget "SDFlasher" */;
+			buildConfigurationList = 4B67EC9019784A1D00C1C935 /* Build configuration list for PBXNativeTarget "SDCardWriter" */;
 			buildPhases = (
 				4B67EC5B19784A1D00C1C935 /* Sources */,
 				4B67EC5C19784A1D00C1C935 /* Frameworks */,
@@ -207,14 +200,14 @@
 			);
 			dependencies = (
 			);
-			name = SDFlasher;
+			name = SDCardWriter;
 			productName = SDFlasher;
-			productReference = 4B67EC5F19784A1D00C1C935 /* SDFlasher.app */;
+			productReference = 4B67EC5F19784A1D00C1C935 /* SDCardWriter.app */;
 			productType = "com.apple.product-type.application";
 		};
-		4B67EC7F19784A1D00C1C935 /* SDFlasherTests */ = {
+		4B67EC7F19784A1D00C1C935 /* SDCardWriterTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4B67EC9319784A1D00C1C935 /* Build configuration list for PBXNativeTarget "SDFlasherTests" */;
+			buildConfigurationList = 4B67EC9319784A1D00C1C935 /* Build configuration list for PBXNativeTarget "SDCardWriterTests" */;
 			buildPhases = (
 				4B67EC7C19784A1D00C1C935 /* Sources */,
 				4B67EC7D19784A1D00C1C935 /* Frameworks */,
@@ -225,9 +218,9 @@
 			dependencies = (
 				4B67EC8519784A1D00C1C935 /* PBXTargetDependency */,
 			);
-			name = SDFlasherTests;
+			name = SDCardWriterTests;
 			productName = SDFlasherTests;
-			productReference = 4B67EC8019784A1D00C1C935 /* SDFlasherTests.xctest */;
+			productReference = 4B67EC8019784A1D00C1C935 /* SDCardWriterTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -244,7 +237,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 4B67EC5A19784A1D00C1C935 /* Build configuration list for PBXProject "SDFlasher" */;
+			buildConfigurationList = 4B67EC5A19784A1D00C1C935 /* Build configuration list for PBXProject "SDCardWriter" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -257,8 +250,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				4B67EC5E19784A1D00C1C935 /* SDFlasher */,
-				4B67EC7F19784A1D00C1C935 /* SDFlasherTests */,
+				4B67EC5E19784A1D00C1C935 /* SDCardWriter */,
+				4B67EC7F19784A1D00C1C935 /* SDCardWriterTests */,
 			);
 		};
 /* End PBXProject section */
@@ -312,7 +305,7 @@
 /* Begin PBXTargetDependency section */
 		4B67EC8519784A1D00C1C935 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 4B67EC5E19784A1D00C1C935 /* SDFlasher */;
+			target = 4B67EC5E19784A1D00C1C935 /* SDCardWriter */;
 			targetProxy = 4B67EC8419784A1D00C1C935 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -429,9 +422,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "SDFlasher/SDFlasher-Prefix.pch";
-				INFOPLIST_FILE = "SDFlasher/SDFlasher-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "SDFlasher/SDCardWriter-Prefix.pch";
+				INFOPLIST_FILE = "SDFlasher/SDCardWriter-Info.plist";
+				PRODUCT_NAME = SDCardWriter;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -442,9 +435,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "SDFlasher/SDFlasher-Prefix.pch";
-				INFOPLIST_FILE = "SDFlasher/SDFlasher-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "SDFlasher/SDCardWriter-Prefix.pch";
+				INFOPLIST_FILE = "SDFlasher/SDCardWriter-Info.plist";
+				PRODUCT_NAME = SDCardWriter;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -464,8 +457,8 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "SDFlasherTests/SDFlasherTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = "SDFlasherTests/SDCardWriterTests-Info.plist";
+				PRODUCT_NAME = SDCardWriterTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -482,8 +475,8 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SDFlasher/SDFlasher-Prefix.pch";
-				INFOPLIST_FILE = "SDFlasherTests/SDFlasherTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = "SDFlasherTests/SDCardWriterTests-Info.plist";
+				PRODUCT_NAME = SDCardWriterTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -492,7 +485,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		4B67EC5A19784A1D00C1C935 /* Build configuration list for PBXProject "SDFlasher" */ = {
+		4B67EC5A19784A1D00C1C935 /* Build configuration list for PBXProject "SDCardWriter" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4B67EC8E19784A1D00C1C935 /* Debug */,
@@ -501,7 +494,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4B67EC9019784A1D00C1C935 /* Build configuration list for PBXNativeTarget "SDFlasher" */ = {
+		4B67EC9019784A1D00C1C935 /* Build configuration list for PBXNativeTarget "SDCardWriter" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4B67EC9119784A1D00C1C935 /* Debug */,
@@ -510,7 +503,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4B67EC9319784A1D00C1C935 /* Build configuration list for PBXNativeTarget "SDFlasherTests" */ = {
+		4B67EC9319784A1D00C1C935 /* Build configuration list for PBXNativeTarget "SDCardWriterTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4B67EC9419784A1D00C1C935 /* Debug */,
