@@ -7,6 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "DragDropView.h"
 
 @interface AppDelegate : NSObject <NSApplicationDelegate> {
     AuthorizationRef _authRef;
@@ -17,6 +18,8 @@
 @property (weak) IBOutlet NSTextField *imageBrowseBox;
 @property (weak) IBOutlet NSButton *uploadBtn;
 @property (weak) IBOutlet NSProgressIndicator *spinner;
+@property (weak) IBOutlet DragDropView *SDDragDropView;
+@property (weak) IBOutlet DragDropView *imageDragDropView;
 
 /** UI actions **/
 - (IBAction)browseForSDClicked:(id)sender;
@@ -25,10 +28,14 @@
 
 /** NSNotification handlers **/
 - (void)gotMountPoint:(NSNotification *)notification;
+- (void)didDropSDPath:(NSNotification *)notification;
+- (void)didDropImagePath:(NSNotification *)notification;
 - (void)didUnmount:(NSNotification *)notification;
 - (void)didUpload:(NSNotification *)notification;
 
 /** Methods **/
+- (void)getMountPointForPath:(NSString *)path;
+- (void)processMountPoint:(NSString *)str;
 - (void)flashSDCard;
 - (BOOL) runProcessAsAdministrator:(NSString*)scriptPath
                      withArguments:(NSArray *)arguments

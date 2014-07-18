@@ -12,9 +12,22 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-    // Insert code here to initialize your application
     [self.uploadBtn setEnabled:NO];
     [self.spinner setDisplayedWhenStopped:NO];
+    
+    // set up event listeners
+    [[NSNotificationCenter defaultCenter]
+     addObserver:self
+     selector:@selector(didDropSDPath:)
+     name:@"FileDropped"
+     object:self.SDDragDropView];
+    
+    [self.SDDragDropView setDirectoryMode:true];
+    [[NSNotificationCenter defaultCenter]
+     addObserver:self
+     selector:@selector(didDropImagePath:)
+     name:@"FileDropped"
+     object:self.imageDragDropView];
 }
 
 - (IBAction)browseForSDClicked:(id)sender {
@@ -48,29 +61,7 @@
             // get mount point from path
             // adapted from http://stackoverflow.com/questions/2167558/give-the-mount-point-of-a-path
             // df "/Volumes/NO NAME" | tail -1 | awk '{ print $1 }'
-            NSTask *task = [[NSTask alloc] init];
-            [task setLaunchPath:@"/bin/bash"];
-            
-            NSMutableString *cmd = [[NSMutableString alloc] init];
-            [cmd appendString:@"/bin/df "];
-            [cmd appendString:@"\""];
-            [cmd appendString: [[files objectAtIndex:i] path]];
-            [cmd appendString:@"\" | tail -1 | awk '{ print $1 }'"];
-            
-            NSLog(cmd);
-            
-            [task setArguments:@[ @"-c", cmd ]];
-            
-            // handle output
-            NSPipe *outputPipe = [NSPipe pipe];
-            [task setStandardOutput:outputPipe];
-            NSFileHandle *fh = [outputPipe fileHandleForReading];
-            [fh waitForDataInBackgroundAndNotify];
-            
-            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gotMountPoint:) name:NSFileHandleDataAvailableNotification object:fh];
-//            [[outputPipe fileHandleForReading] readToEndOfFileInBackgroundAndNotify];
-            
-            [task launch];
+            [self getMountPointForPath:[[files objectAtIndex:i] path]];
         }
     }
 }
@@ -121,43 +112,37 @@
 //--------------------------------------------------------------
 // Notification handlers
 //--------------------------------------------------------------
+
+- (void)didDropImagePath:(NSNotification *)notification {
+    NSLog(@"Dropped image path");
+    // check to see if we need to enable the upload button
+    self.uploadEnabled = (self.mountPoint != nil) ? TRUE : FALSE;
+    [self.uploadBtn setEnabled:self.uploadEnabled];
+    
+    NSString *path = [[notification userInfo] objectForKey:@"PathString"];
+    self.imagePath = path;
+    [self.imageBrowseBox setStringValue:self.imagePath];
+    NSLog(@"File path: %@", path);
+}
+
+- (void)didDropSDPath:(NSNotification *)notification {
+    NSLog(@"Dropped SD path");
+    // check to see if we need to enable the upload button
+    self.uploadEnabled = (self.imagePath != nil) ? TRUE : FALSE;
+    [self.uploadBtn setEnabled:self.uploadEnabled];
+    
+    NSString *path = [[notification userInfo] objectForKey:@"PathString"];
+    [self getMountPointForPath:path];
+//    [self.SDBrowseBox setStringValue:path];
+    NSLog(@"File path: %@", path);
+}
+     
 - (void)gotMountPoint:(NSNotification *)notification {
     NSFileHandle *fh = [notification object];
     NSData *data = [fh availableData];
     NSString *str = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
     
-    // strip any newline characters
-    str = [str stringByTrimmingCharactersInSet:[NSCharacterSet newlineCharacterSet]];
-    
-    // perform a regex on the returned mountPoint,
-    // e.g. to turn /dev/disk1s2 into /dev/rdisk1
-    // using sed, the command would be:
-    // sed 's/s[0-9]//g' | sed 's/\/disk/\/rdisk/g'
-    NSError *error = nil;
-    NSRegularExpression *removeSectorRegex = [NSRegularExpression regularExpressionWithPattern:@"s\\d+" options:NSRegularExpressionCaseInsensitive error:&error];
-    NSString *stringNoSector = [removeSectorRegex stringByReplacingMatchesInString:self.mountPoint options:0 range:NSMakeRange(0, [self.mountPoint length]) withTemplate:@""];
-    
-    // SAFETY CHECK — never allow user to set mount point to /dev/disk0 (that would suck balls)
-    NSRegularExpression *diskZeroRegex = [NSRegularExpression regularExpressionWithPattern:@"disk0" options:NSRegularExpressionCaseInsensitive error:&error];
-    NSRange textRange = NSMakeRange(0, str.length);
-    NSRange matchRange = [diskZeroRegex rangeOfFirstMatchInString:str options:NSMatchingReportProgress range:textRange];
-    
-    if(matchRange.location != NSNotFound) {
-        // shit, we found a match. Abort! Abort! Do not press the red button!
-        [self.uploadBtn setEnabled:NO];
-        [self.SDBrowseBox setStringValue:@"WRONG DISK SELECTED"];
-        return;
-    }
-    
-    // we're safe, move on
-    self.mountPoint = stringNoSector;
-    
-    NSRegularExpression *addPrefixRegex = [NSRegularExpression regularExpressionWithPattern:@"/disk" options:NSRegularExpressionCaseInsensitive error:&error];
-    NSString *stringWithPrefix = [addPrefixRegex stringByReplacingMatchesInString:stringNoSector options:0 range:NSMakeRange(0, [stringNoSector length]) withTemplate:@"/rdisk"];
-    self.mountPointRaw = stringWithPrefix;
-    
-    NSLog(@"Mount point: %@", self.mountPoint);
-    [self.SDBrowseBox setStringValue:str];
+    [self processMountPoint:str];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NSFileHandleReadToEndOfFileCompletionNotification object:[notification object]];
 }
 
@@ -180,6 +165,70 @@
 //--------------------------------------------------------------
 
 //--------------------------------------------------------------
+// METHODS
+//--------------------------------------------------------------
+
+-(void)getMountPointForPath:(NSString *) path {
+    NSTask *task = [[NSTask alloc] init];
+    [task setLaunchPath:@"/bin/bash"];
+    
+    NSMutableString *cmd = [[NSMutableString alloc] init];
+    [cmd appendString:@"/bin/df "];
+    [cmd appendString:@"\""];
+    [cmd appendString:path];
+    [cmd appendString:@"\" | tail -1 | awk '{ print $1 }'"];
+    
+    NSLog(cmd);
+    
+    [task setArguments:@[ @"-c", cmd ]];
+    
+    // handle output
+    NSPipe *outputPipe = [NSPipe pipe];
+    [task setStandardOutput:outputPipe];
+    NSFileHandle *fh = [outputPipe fileHandleForReading];
+    [fh waitForDataInBackgroundAndNotify];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gotMountPoint:) name:NSFileHandleDataAvailableNotification object:fh];
+    //            [[outputPipe fileHandleForReading] readToEndOfFileInBackgroundAndNotify];
+    
+    [task launch];
+}
+
+-(void)processMountPoint:(NSString *)str {
+    NSLog(@"Processing mount point: %@", str);
+    // strip any newline characters
+    str = [str stringByTrimmingCharactersInSet:[NSCharacterSet newlineCharacterSet]];
+    
+    // perform a regex on the returned mountPoint,
+    // e.g. to turn /dev/disk1s2 into /dev/rdisk1
+    // using sed, the command would be:
+    // sed 's/s[0-9]//g' | sed 's/\/disk/\/rdisk/g'
+    NSError *error = nil;
+    NSRegularExpression *removeSectorRegex = [NSRegularExpression regularExpressionWithPattern:@"s\\d+" options:NSRegularExpressionCaseInsensitive error:&error];
+    NSString *stringNoSector = [removeSectorRegex stringByReplacingMatchesInString:str options:0 range:NSMakeRange(0, [str length]) withTemplate:@""];
+    
+    // SAFETY CHECK — never allow user to set mount point to /dev/disk0 (that would suck balls)
+    NSRegularExpression *diskZeroRegex = [NSRegularExpression regularExpressionWithPattern:@"disk0" options:NSRegularExpressionCaseInsensitive error:&error];
+    NSRange textRange = NSMakeRange(0, str.length);
+    NSRange matchRange = [diskZeroRegex rangeOfFirstMatchInString:str options:NSMatchingReportProgress range:textRange];
+    
+    if(matchRange.location != NSNotFound) {
+        // shit, we found a match. Abort! Abort! Do not press the red button!
+        [self.uploadBtn setEnabled:NO];
+        [self.SDBrowseBox setStringValue:@"WRONG DISK SELECTED"];
+        return;
+    }
+    
+    // we're safe, move on
+    self.mountPoint = stringNoSector;
+    
+    NSRegularExpression *addPrefixRegex = [NSRegularExpression regularExpressionWithPattern:@"/disk" options:NSRegularExpressionCaseInsensitive error:&error];
+    NSString *stringWithPrefix = [addPrefixRegex stringByReplacingMatchesInString:stringNoSector options:0 range:NSMakeRange(0, [stringNoSector length]) withTemplate:@"/rdisk"];
+    self.mountPointRaw = stringWithPrefix;
+    
+    NSLog(@"Mount point: %@", self.mountPoint);
+    [self.SDBrowseBox setStringValue:self.mountPoint];
+}
 
 -(void)flashSDCard {
     // reference:

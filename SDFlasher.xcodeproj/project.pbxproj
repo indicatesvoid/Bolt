@@ -20,6 +20,8 @@
 		4B67EC8D19784A1D00C1C935 /* SDFlasherTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B67EC8C19784A1D00C1C935 /* SDFlasherTests.m */; };
 		4B67EC9919784E0600C1C935 /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B67EC9719784E0600C1C935 /* bg.png */; };
 		4B67EC9A19784E0600C1C935 /* FP_Logo_Bk.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B67EC9819784E0600C1C935 /* FP_Logo_Bk.png */; };
+		4B67EC9D197892DE00C1C935 /* DragDropView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B67EC9C197892DE00C1C935 /* DragDropView.xib */; };
+		4B67ECA1197893A500C1C935 /* DragDropView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B67ECA0197893A500C1C935 /* DragDropView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +56,9 @@
 		4B67EC8C19784A1D00C1C935 /* SDFlasherTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SDFlasherTests.m; sourceTree = "<group>"; };
 		4B67EC9719784E0600C1C935 /* bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg.png; sourceTree = "<group>"; };
 		4B67EC9819784E0600C1C935 /* FP_Logo_Bk.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FP_Logo_Bk.png; sourceTree = "<group>"; };
+		4B67EC9C197892DE00C1C935 /* DragDropView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DragDropView.xib; sourceTree = "<group>"; };
+		4B67EC9F197893A500C1C935 /* DragDropView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DragDropView.h; sourceTree = "<group>"; };
+		4B67ECA0197893A500C1C935 /* DragDropView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DragDropView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +85,7 @@
 		4B67EC5619784A1D00C1C935 = {
 			isa = PBXGroup;
 			children = (
+				4B67EC9B19788CB700C1C935 /* SDFlasherHelper */,
 				4B67EC6819784A1D00C1C935 /* SDFlasher */,
 				4B67EC8619784A1D00C1C935 /* SDFlasherTests */,
 				4B67EC6119784A1D00C1C935 /* Frameworks */,
@@ -119,6 +125,7 @@
 		4B67EC6819784A1D00C1C935 /* SDFlasher */ = {
 			isa = PBXGroup;
 			children = (
+				4B67EC9E1978937800C1C935 /* DragDropView */,
 				4B67EC9619784D0D00C1C935 /* Images */,
 				4B67EC7419784A1D00C1C935 /* AppDelegate.h */,
 				4B67EC7519784A1D00C1C935 /* AppDelegate.m */,
@@ -166,6 +173,23 @@
 				4B67EC9819784E0600C1C935 /* FP_Logo_Bk.png */,
 			);
 			name = Images;
+			sourceTree = "<group>";
+		};
+		4B67EC9B19788CB700C1C935 /* SDFlasherHelper */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = SDFlasherHelper;
+			sourceTree = "<group>";
+		};
+		4B67EC9E1978937800C1C935 /* DragDropView */ = {
+			isa = PBXGroup;
+			children = (
+				4B67EC9C197892DE00C1C935 /* DragDropView.xib */,
+				4B67EC9F197893A500C1C935 /* DragDropView.h */,
+				4B67ECA0197893A500C1C935 /* DragDropView.m */,
+			);
+			name = DragDropView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -244,6 +268,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4B67EC9D197892DE00C1C935 /* DragDropView.xib in Resources */,
 				4B67EC9919784E0600C1C935 /* bg.png in Resources */,
 				4B67EC6D19784A1D00C1C935 /* InfoPlist.strings in Resources */,
 				4B67EC7B19784A1D00C1C935 /* Images.xcassets in Resources */,
@@ -270,6 +295,7 @@
 			files = (
 				4B67EC7619784A1D00C1C935 /* AppDelegate.m in Sources */,
 				4B67EC6F19784A1D00C1C935 /* main.m in Sources */,
+				4B67ECA1197893A500C1C935 /* DragDropView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

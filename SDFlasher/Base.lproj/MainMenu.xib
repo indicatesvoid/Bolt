@@ -14,9 +14,11 @@
         <customObject id="Voe-Tx-rLC" customClass="AppDelegate">
             <connections>
                 <outlet property="SDBrowseBox" destination="8Lu-5y-2xx" id="VeM-Yz-Ugu"/>
+                <outlet property="SDDragDropView" destination="Wv8-hE-aB9" id="3rK-Gj-o6e"/>
                 <outlet property="browseForImageButton" destination="7Jc-Pn-a7C" id="MUW-H7-K2z"/>
                 <outlet property="browseForSDButton" destination="aWY-dN-8bs" id="V6v-rT-0Fi"/>
                 <outlet property="imageBrowseBox" destination="0B3-Dm-1gn" id="XfP-1b-5pb"/>
+                <outlet property="imageDragDropView" destination="pz0-iN-EYU" id="xrg-eu-UZU"/>
                 <outlet property="spinner" destination="8l1-5i-8zG" id="eWb-Sh-eGs"/>
                 <outlet property="uploadBtn" destination="1Qh-t1-HJA" id="6nV-N1-Xkh"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="gIp-Ho-8D9"/>
@@ -692,20 +694,6 @@
                             </connections>
                         </buttonCell>
                     </button>
-                    <colorWell fixedFrame="YES" bordered="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kqV-lp-zPd">
-                        <rect key="frame" x="16" y="185" width="213" height="127"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <color key="color" red="0.85786974323926146" green="0.86306895380434789" blue="0.85267053267417503" alpha="1" colorSpace="calibratedRGB"/>
-                    </colorWell>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sQh-7t-5DC">
-                        <rect key="frame" x="73" y="240" width="98" height="17"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Drag and Drop" id="ca1-Mw-S1x">
-                            <font key="font" metaFont="system"/>
-                            <color key="textColor" red="0.46645720108695654" green="0.46645720108695654" blue="0.46645720108695654" alpha="1" colorSpace="calibratedRGB"/>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
                     <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8Lu-5y-2xx">
                         <rect key="frame" x="18" y="137" width="142" height="22"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -753,11 +741,6 @@
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <colorWell fixedFrame="YES" bordered="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Kg-W3-ScH">
-                        <rect key="frame" x="247" y="185" width="213" height="127"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <color key="color" red="0.85786974319999998" green="0.86306895380000004" blue="0.85267053270000004" alpha="1" colorSpace="calibratedRGB"/>
-                    </colorWell>
                     <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0B3-Dm-1gn">
                         <rect key="frame" x="249" y="137" width="142" height="22"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -796,15 +779,14 @@
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Q7O-Wd-dBh">
-                        <rect key="frame" x="304" y="240" width="98" height="17"/>
+                    <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wv8-hE-aB9" customClass="DragDropView">
+                        <rect key="frame" x="18" y="185" width="213" height="127"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Drag and Drop" id="qKW-kg-IZv">
-                            <font key="font" metaFont="system"/>
-                            <color key="textColor" red="0.4664572011" green="0.4664572011" blue="0.4664572011" alpha="1" colorSpace="calibratedRGB"/>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
+                    </customView>
+                    <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pz0-iN-EYU" customClass="DragDropView">
+                        <rect key="frame" x="249" y="185" width="213" height="127"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    </customView>
                 </subviews>
             </view>
         </window>
