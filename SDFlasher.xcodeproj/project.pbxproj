@@ -508,6 +508,7 @@
 				4B67EC9219784A1D00C1C935 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4B67EC9319784A1D00C1C935 /* Build configuration list for PBXNativeTarget "SDFlasherTests" */ = {
 			isa = XCConfigurationList;
@@ -516,6 +517,7 @@
 				4B67EC9519784A1D00C1C935 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

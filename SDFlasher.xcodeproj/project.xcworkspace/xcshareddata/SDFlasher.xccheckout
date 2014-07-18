@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>020B54A3-D5F5-4A28-B01C-62BDB1CB203D</string>
+	<key>IDESourceControlProjectName</key>
+	<string>SDFlasher</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>F036A5AD-BBBD-421C-B7F9-C389ECE0D282</key>
+		<string>ssh://github.com/indicatesvoid/Bolt.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>SDFlasher.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>F036A5AD-BBBD-421C-B7F9-C389ECE0D282</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://github.com/indicatesvoid/Bolt.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>F036A5AD-BBBD-421C-B7F9-C389ECE0D282</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>F036A5AD-BBBD-421C-B7F9-C389ECE0D282</string>
+			<key>IDESourceControlWCCName</key>
+			<string>sd-flasher</string>
+		</dict>
+	</array>
+</dict>
+</plist>
