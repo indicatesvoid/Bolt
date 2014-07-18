@@ -106,7 +106,9 @@
 - (IBAction)uploadClicked:(id)sender {
     if(self.imagePath == nil || self.mountPoint == nil) return;
     [self.spinner startAnimation:self];
+    [self.uploadBtn setEnabled:NO];
     [self flashSDCard];
+    [self.uploadBtn setEnabled:YES];
 }
 
 //--------------------------------------------------------------
