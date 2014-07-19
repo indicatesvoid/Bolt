@@ -135,6 +135,9 @@
 //--------------------------------------------------------------
 
 - (void)didDropImagePath:(NSNotification *)notification {
+    // abort if this step is not yet enabled
+    if(!self.selectImageEnabled) return;
+    
     NSLog(@"Dropped image path");
     // check to see if we need to enable the upload button
     self.uploadEnabled = (self.mountPoint != nil) ? TRUE : FALSE;
@@ -143,6 +146,7 @@
     NSString *path = [[notification userInfo] objectForKey:@"PathString"];
     self.imagePath = path;
     [self.imageBrowseBox setStringValue:self.imagePath];
+    [self.statusField setStringValue:@"Select the button below to update your SD Card"];
     NSLog(@"File path: %@", path);
 }
 
@@ -233,13 +237,13 @@
     NSRange textRange = NSMakeRange(0, str.length);
     NSRange matchRange = [diskZeroRegex rangeOfFirstMatchInString:str options:NSMatchingReportProgress range:textRange];
     
-    if(matchRange.location != NSNotFound) {
-        // shit, we found a match. Abort! Abort! Do not press the red button!
-        [self.uploadBtn setEnabled:NO];
-//        [self.SDBrowseBox setStringValue:@"WRONG DISK SELECTED"];
-        [self.statusField setStringValue:@"INVALID DISK"];
-        return;
-    }
+//    if(matchRange.location != NSNotFound) {
+//        // shit, we found a match. Abort! Abort! Do not press the red button!
+//        [self.uploadBtn setEnabled:NO];
+////        [self.SDBrowseBox setStringValue:@"WRONG DISK SELECTED"];
+//        [self.statusField setStringValue:@"INVALID DISK"];
+//        return;
+//    }
     
     // we're safe, move on
     [self.statusField setStringValue:@"Please select the file you want to copy"];
