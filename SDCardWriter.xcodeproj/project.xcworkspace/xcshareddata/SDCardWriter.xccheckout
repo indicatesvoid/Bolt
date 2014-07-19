@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>CD7A977D-9787-45B1-A9A4-C3B1FE2FB679</string>
+	<key>IDESourceControlProjectName</key>
+	<string>SDCardWriter</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>EAE63E75-0A99-46E1-92F3-05058137EA28</key>
+		<string>ssh://github.com/indicatesvoid/Bolt.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>SDCardWriter.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>EAE63E75-0A99-46E1-92F3-05058137EA28</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://github.com/indicatesvoid/Bolt.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>EAE63E75-0A99-46E1-92F3-05058137EA28</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>EAE63E75-0A99-46E1-92F3-05058137EA28</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Bolt</string>
+		</dict>
+	</array>
+</dict>
+</plist>

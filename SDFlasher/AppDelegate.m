@@ -15,6 +15,13 @@
 
     [self.uploadBtn setEnabled:NO];
     [self.spinner setDisplayedWhenStopped:NO];
+    [self.statusField setEditable:NO];
+    [self.statusField setSelectable:NO];
+    [self.statusField setStringValue:@"Please select your SD Card"];
+    
+    // disable step 2 (select image) by default
+    // will re-enable in gotMountPoint method
+    [self enableSelectImage:NO];
     
     // set up event listeners
     [[NSNotificationCenter defaultCenter]
@@ -29,6 +36,15 @@
      selector:@selector(didDropImagePath:)
      name:@"FileDropped"
      object:self.imageDragDropView];
+}
+
+- (void)enableSelectImage:(BOOL)enable {
+    self.selectImageEnabled = enable;
+    [self.imageBrowseBox setEditable:enable];
+    [self.imageBrowseBtn setEnabled:enable];
+    
+    NSColor *textColor = (enable) ? [NSColor blackColor] : [NSColor disabledControlTextColor];
+    [self.imageBrowseInstructions setTextColor:textColor];
 }
 
 - (IBAction)browseForSDClicked:(id)sender {
@@ -86,13 +102,15 @@
     // Display the dialog box.  If the OK pressed,
     // process the files.
     if ( [openDlg runModal] == NSOKButton ) {
-        
         // check to see if we need to enable the upload button
         self.uploadEnabled = (self.mountPoint != nil) ? TRUE : FALSE;
         [self.uploadBtn setEnabled:self.uploadEnabled];
         
         // Gets list of all files selected
         NSArray *files = [openDlg URLs];
+        
+        // update status label
+        if([files count] > 0) [self.statusField setStringValue:@"Select the button below to update your SD Card"];
         
         // Loop through the files and process them.
         for( i = 0; i < [files count]; i++ ) {
@@ -218,11 +236,14 @@
     if(matchRange.location != NSNotFound) {
         // shit, we found a match. Abort! Abort! Do not press the red button!
         [self.uploadBtn setEnabled:NO];
-        [self.SDBrowseBox setStringValue:@"WRONG DISK SELECTED"];
+//        [self.SDBrowseBox setStringValue:@"WRONG DISK SELECTED"];
+        [self.statusField setStringValue:@"INVALID DISK"];
         return;
     }
     
     // we're safe, move on
+    [self.statusField setStringValue:@"Please select the file you want to copy"];
+    [self enableSelectImage:YES];
     self.mountPoint = stringNoSector;
     
     NSRegularExpression *addPrefixRegex = [NSRegularExpression regularExpressionWithPattern:@"/disk" options:NSRegularExpressionCaseInsensitive error:&error];
@@ -236,6 +257,9 @@
 -(void)flashSDCard {
     // reference:
     // http://smittytone.wordpress.com/2013/09/06/back-up-a-raspberry-pi-sd-card-using-a-mac/
+    
+    // set status //
+    [self.statusField setStringValue:@"Updating your SD card, this takes approximately 20 minutes."];
     
     // unmount //
     NSTask *unmount = [[NSTask alloc] init];
@@ -269,10 +293,15 @@
     
     if(!success) NSLog(@"Failed with exit code %@", processErrorDescription);
     else {
-        NSLog(@"Flash: %@", output);
+        NSLog(@"Success");
     }
     
+    // we're done
+    // stop the spinner animation (and hide the spinner) and
+    // set completion status
+    [self.statusField setStringValue:@"Your SD card has been updated!"];
     [self.spinner stopAnimation:self];
+    
     
 /** OLD METHOD -- will not work due to elevated privileges requirement **/
 //    NSTask *flash = [[NSTask alloc] init];
@@ -305,7 +334,7 @@
 // http://stackoverflow.com/questions/3541654/how-to-give-permission-using-nstask-objective-c
 // Could do this with more complicated shit like SMJobBless (makes me think of the pope) + XPC, but why bother really?
 // (note — should you ever want to bother, see
-// https://github.com/atnan/SMJobBlessXPC for a good example
+// https://github.com/atnan/SMJobBlessXPC for a good example)
 - (BOOL) runProcessAsAdministrator:(NSString*)scriptPath
                      withArguments:(NSArray *)arguments
                             output:(NSString **)output

@@ -14,12 +14,18 @@
 }
 /** UI outlets **/
 @property (assign) IBOutlet NSWindow *window;
+
 @property (weak) IBOutlet NSTextField *SDBrowseBox;
+@property (weak) IBOutlet DragDropView *SDDragDropView;
+
+@property (weak) IBOutlet NSTextField *imageBrowseInstructions;
 @property (weak) IBOutlet NSTextField *imageBrowseBox;
+@property (weak) IBOutlet NSButton *imageBrowseBtn;
+@property (weak) IBOutlet DragDropView *imageDragDropView;
+
 @property (weak) IBOutlet NSButton *uploadBtn;
 @property (weak) IBOutlet NSProgressIndicator *spinner;
-@property (weak) IBOutlet DragDropView *SDDragDropView;
-@property (weak) IBOutlet DragDropView *imageDragDropView;
+@property (weak) IBOutlet NSTextField *statusField;
 
 /** UI actions **/
 - (IBAction)browseForSDClicked:(id)sender;
@@ -36,6 +42,7 @@
 /** Methods **/
 - (void)getMountPointForPath:(NSString *)path;
 - (void)processMountPoint:(NSString *)str;
+- (void)enableSelectImage:(BOOL)enable;
 - (void)flashSDCard;
 - (BOOL) runProcessAsAdministrator:(NSString*)scriptPath
                      withArguments:(NSArray *)arguments
@@ -47,4 +54,5 @@
 @property (strong) NSString* mountPointRaw;
 @property (strong) NSString* imagePath;
 @property (nonatomic, assign) BOOL uploadEnabled;
+@property (nonatomic, assign) BOOL selectImageEnabled;
 @end

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5056"/>
     </dependencies>
@@ -18,8 +18,11 @@
                 <outlet property="browseForImageButton" destination="7Jc-Pn-a7C" id="MUW-H7-K2z"/>
                 <outlet property="browseForSDButton" destination="aWY-dN-8bs" id="V6v-rT-0Fi"/>
                 <outlet property="imageBrowseBox" destination="0B3-Dm-1gn" id="XfP-1b-5pb"/>
+                <outlet property="imageBrowseBtn" destination="7Jc-Pn-a7C" id="FX8-U2-Wvd"/>
+                <outlet property="imageBrowseInstructions" destination="pRY-AZ-BK2" id="we1-2I-0yl"/>
                 <outlet property="imageDragDropView" destination="pz0-iN-EYU" id="xrg-eu-UZU"/>
                 <outlet property="spinner" destination="8l1-5i-8zG" id="eWb-Sh-eGs"/>
+                <outlet property="statusField" destination="6V7-ni-IAk" id="p6W-YT-BVp"/>
                 <outlet property="uploadBtn" destination="1Qh-t1-HJA" id="6nV-N1-Xkh"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="gIp-Ho-8D9"/>
             </connections>
@@ -678,7 +681,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="471" y="289" width="600" height="340"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1418"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="878"/>
             <view key="contentView" id="EiT-Mj-1SZ">
                 <rect key="frame" x="0.0" y="0.0" width="600" height="340"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -719,7 +722,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </progressIndicator>
                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qWx-mM-NVP">
-                        <rect key="frame" x="510" y="18" width="70" height="22"/>
+                        <rect key="frame" x="510" y="13" width="70" height="22"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="FP_Logo_Bk" id="be3-d4-AHk"/>
                     </imageView>
